@@ -2,6 +2,7 @@
 ## General Index
 - Getting Started
     * Installing git
+        Haciendo prueba de instalacion
     * What it's git?
     * Why git?
     * How it works? (A first approach)
