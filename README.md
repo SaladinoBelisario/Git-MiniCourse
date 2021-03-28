@@ -2,11 +2,15 @@
 ## General Index
 - Getting Started
     * Installing git
+
+    Instalacion para macOs
+    brew install git
+    
     * What it's git?
     * Why git?
     * How it works? (A first approach)
     * Your first setup
-- Git Basics 
+- Git Basics
     * Getting a Git Repository
     * Recording Changes to the Repository
     * Viewing the Commit History
@@ -16,13 +20,13 @@
     * Tagging
 - Git workflows
     * Why workflows matters
-- Git Branching 
+- Git Branching
     * Branching and Merging
     * Branch Management
     * Remote Branches
 - Git on the Server
     * Protocols
-    * 
+    *
     *
     *
 - Git Tools
