@@ -2,6 +2,7 @@
 ## General Index
 - Getting Started
     * Installing git
+    Lo hizo ELena :)
     * What it's git?
     * Why git?
     * How it works? (A first approach)
