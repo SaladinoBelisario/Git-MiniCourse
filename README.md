@@ -3,7 +3,7 @@
 - Getting Started
     * Installing git
     * What it's git?
-    * Why and How to git?
+    * Why git?
     * How it works? (A first approach)
     * Your first setup
 - Git Basics 
