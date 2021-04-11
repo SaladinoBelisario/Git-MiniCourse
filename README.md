@@ -12,10 +12,25 @@
     * Your first setup
 - Git Basics
     * Getting a Git Repository
+    git init
     * Recording Changes to the Repository
+    git add nombrearchivo
+    git commit -m "nombremensaje"
+    git push
+    git origin
+    
     * Viewing the Commit History
     * Viewing the Commit History
+    git status
+    Información sobre mi repositorio
+
+    Historial
+    git log -3
+    git log -grep "nombremensaje"
+    git log --author "Quecky"
+
     * Undoing Things
+    git --amend
     * Working with Remotes
     * Tagging
 - Git workflows
