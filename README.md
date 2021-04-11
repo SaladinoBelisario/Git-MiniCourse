@@ -37,4 +37,4 @@
 - Git and Other Systems
 - The Git LFS (Large File System)
 
-Dalis Barranco Giles
+Dalis Barranco Giles Z
