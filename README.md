@@ -37,4 +37,8 @@
 - Git and Other Systems
 - The Git LFS (Large File System)
 
+<<<<<<< HEAD
 Dalis Barranco Giles Z
+=======
+Dalis
+>>>>>>> parent of e5dcf2e... mend
