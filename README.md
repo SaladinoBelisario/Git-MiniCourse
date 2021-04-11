@@ -5,7 +5,7 @@
 
     Instalacion para macOs
     brew install git
-    
+
     * What it's git?
     * Why git?
     * How it works? (A first approach)
@@ -36,3 +36,5 @@
     *
 - Git and Other Systems
 - The Git LFS (Large File System)
+
+Dalis
