@@ -1,54 +1,66 @@
 # **Welcome to the Git MiniCourse Notes**
 ## General Index
-- Getting Started
-    * Installing git
-
-    Instalacion para macOs
-    brew install git
-
-    * What it's git?
-    * Why git?
-    * How it works? (A first approach)
-    * Your first setup
-- Git Basics
-    * Getting a Git Repository
-    git init
-    * Recording Changes to the Repository
-    git add nombrearchivo
-    git commit -m "nombremensaje"
-    git push
-    git origin
+1. About Version Control
+2. An then Git
+3. Getting Started
+4. Git basics.
+  - Snapshots not differences
+  - Working tih the repository
+  - First Setup
+  - Status of the repository
+  - Showing the log
+  - Undoing things
+  - Ignoring Files
+    * The .gitignore file
+  - Working with remotes
+  - Tagging 
     
-    * Viewing the Commit History
-    * Viewing the Commit History
-    git status
-    Información sobre mi repositorio
+5. Git Branching
+  - Creating new branches 
+  - Changing branches
+  - Branching and Merging
+  - Fast-forward
+  - Three-way Merge
+  - Other Strategies
+  - Rebase
+    * More Interesting Rebases
+    * The perils of rebasing
+  - Squash
+    * How to squash your commits
+  - Cherry-pick
 
-    Historial
-    git log -3
-    git log -grep "nombremensaje"
-    git log --author "Quecky"
+  
+6. Git Workflows
+  - **Why the workflows matters**
+  - Git Flow
+  - GitHub Flow
+  - GitLab Flow
+  - Master-only Flow
+  - Git Release Flow
+  - Trunk-based development
 
-    * Undoing Things
-    git --amend
-    * Working with Remotes
-    * Tagging
-- Git workflows
-    * Why workflows matters
-- Git Branching
-    * Branching and Merging
-    * Branch Management
-    * Remote Branches
-- Git on the Server
-    * Protocols
-    *
-    *
-    *
-- Git Tools
-    *
-- Git Internals
-    *
-    *
-- Git and Other Systems
-- The Git LFS (Large File System)
-
+7. Git Internals
+  - Plumbing and porcelain
+    * Git Init
+  - Git Objects
+    * Blob Object
+    * Three Object
+    * Commit Object
+    * Git References
+    * Git HEAD
+    * Tags
+    * Remotes
+  
+8. Git Tools
+  - Singing your work
+    * GPG Introduction
+    * Singing tags
+    * Verifying tags
+    * Singing commits
+  - Submodules
+    * Starting with submodules
+    * Cloning with submodules
+  - LFS
+    * What is?
+    * How it works?
+    * How to
