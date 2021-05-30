@@ -24,7 +24,7 @@
     * Recording Changes to the Repository
         * git commit -m "commit message"
     * Viewing the Commit History
-    * Viewing the Commit History
+        * git log
     * Undoing Things
     * Working with Remotes
     * Tagging
