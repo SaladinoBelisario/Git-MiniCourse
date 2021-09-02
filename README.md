@@ -66,3 +66,20 @@
     * What is?
     * How it works?
     * How to
+
+> **References**
+> 
+>[1]
+> Scott Chacon y Ben Straub, Pro Git, 2nd ed. Apress.
+> 
+> [2]
+> Git Notes For Professionals. goalkicker [Online]. Disponible en: https://goalkicker.com/GitBoo. [Accedido: 05-may-2021]
+> 
+> [3]
+> Scott Chacon, Git Internals Source code control and beyond. 2008.
+> 
+> [4]
+> E. Pidoux, Git Best Prectices Guide. Packt, 2014.
+> 
+> [5]
+> J. Ahmad y C. Belanger, Mastering Git, 1st ed. 2019.
