@@ -114,17 +114,154 @@ Another important thing you need to specify is your default editor, e.g:
 
 **_git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"_**
 
-
 ### Status of the repository
+
+We can know the status of or repository in every moment with:
+
+**Command: _git status_**
 
 ### Showing the log
 
+**Command: _git log_**
+
+Limiting what git shows us:
+
+**_git log -3_**
+
+A little prettier:
+
+**_git log --decorate --oneline --graph_**
+
+If we want a most colorful printing we can use:
+
+**_git log --graph --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr) %C(yellow)<%an>%Creset'_**
+
+the available format specifiers are:
+![Format options](img/Pretty_printing.png "Format options")
+
+Looking for a piece of code (Added or removed):
+
+**_git log -S "#define SAMPLES"_**
+
+Looking for a piece of code (Changed):
+
+**_git log -G "#define SAMPLES"_**
+
 ### Undoing things
+
+The possibility of making amends for our mistakes:
+
+**_git commit –amend_**
+
+Example:
+
+    $ git commit -m 'Initial commit'
+    $ git add forgotten_file
+    $ git commit --amend
+
+**Reckless commands:**
+
+Rebooting to a previous state:
+
+**_git reset HEAD <file>_**
+
+With an empty branch:
+
+**_git checkout - <file>_**
+
+**Safe commands:**
+
+The conventional option when we have not made a commitment:
+
+**_git restore --staged <file>_**
+
+What if I already got engaged?
+
+**_git revert HEAD ~ 1_**
+
+**_git push_**
+
+> **DON'T** use _git push --force_ unless you wish to bring down the opprobrium of all other users of that repository. **NEVER** rewrite public history.
 
 ### Ignoring files
 
+How do I keep my secret files secret? How do I avoid uploading unnecessary files 
+for the project?
+
+When a file or directory is ignored, it **will not** be:
+
+1. Tracked by Git
+
+2. Reported by commands such as _git status_ or _git diff_
+
+3. Staged with commands such as _git add -A_
+
 **The .gitignore file**
+
+![Gitignore basics](img/Gitignore_basic.png "Basic ignoring")
+
+![Ignoring multiple](img/Gitignore_multiple.png "Ignore multiple directories/files")
+
+![Ignore only specific](img/Gitignore_specific.png "Ignoring specific files")
+
+![Exclude ignored files](img/Gitignore_exclude.png "Exclude a file from ignoring")
+
+We can use predefined _.gitignore_ files from the GitHub page:
+
+[Gitignore templates](https://github.com/github/gitignore)
 
 ### Working with remotes
 
+Deleting a remote branch:
+
+**_git push [remote-name] --delete [branch-name]_**
+
+Changing the URL of our remote origins:
+
+**_git remote set-url origin [new-url]_**
+
+Renaming a remote source:
+
+**_git remote rename [original-name] [new-name]_**
+
 ### Tagging
+
+How to find key versions of our repository faster? We can tag versions of our project in order 
+to mark important versions.
+
+With message or without message? We have the option to add a message to our tags.
+
+Showing all our tags:
+
+**_git tag_**
+
+Without a message:
+
+**_git tag <tagname>_**
+
+With a message:
+
+**_git tag –a –m <msg> <tagname>_**
+
+Tags in git are not a commitment, so to view them they will not appear in the log, but
+rather show all the repository elements (blobs, trees, tags and commits).
+
+**_git show_**
+
+As they are not a commitment, they are not sent to remote sources unless specified, only
+message labels can be sent:
+
+**_git push origin <tagname>_**
+
+Or if we want to send all our labels:
+
+**_git push origin –tags_**
+
+Deleting our labels:
+
+**_git tag –d <tagname>_**
+
+And what is it for? We can use the tags to mark an important point in the history and point a 
+branch there in every moment:
+
+**_git checkout <tagname>_**
