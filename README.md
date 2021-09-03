@@ -21,11 +21,11 @@
   - Creating new branches 
   - Changing branches
   - Branching and Merging
-  - Fast-forward
-  - Three-way Merge
-  - Other Strategies
+    * Fast-forward
+    * Three-way Merge
+    * Other Strategies
   - Rebase
-    * More Interesting Rebases
+    * More Interesting Rebase
     * The perils of rebasing
   - Squash
     * How to squash your commits
