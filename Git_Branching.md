@@ -130,12 +130,151 @@ to prefer your local/remote changes if there are conflicts of the two merged bra
 
 #### Rebase
 
+As we have just seen, the merge command combines the changes of two branches. The _git rebase_ 
+command will take the changes from the first branch and apply them to the other branch.
+
+Rebase command don't merge commits!
+
+Let's see an example:
+
+![Divergent history](img/Rebase_1.png "Divergent history")
+
+This operation works by going to the common ancestor of the two branches (in which you are and 
+in which you are passing), obtaining the difference introduced by each confirmation of the 
+branch in which you are, saving those differences in temporary files, restoring the current 
+branch to the same commit as the branch you are resetting on and finally applying each change 
+in turn.
+
+![Rebase operation](img/Rebase_2.png "Rebasing")
+
 **More Interesting Rebase**
+
+![Base divergent history](img/More_Rebase_1.png "History to rebase")
+
+Suppose you decide that you want to merge client-side changes into your main line for a release,
+but you want to postpone server-side changes until further testing. You can take the changes 
+on the client that are not on the server (C8 and C9) and reproduce them in your master branch 
+using the _--onto_ option of _git rebase_:
+
+**_git rebase --onto master server client_**
+
+This basically says: "Take the client branch, discover the patches as it was detached from
+the server branch, and replay these patches on the client branch as if it were based directly
+on the master branch." It is a bit complex, but the result is quite good.
+
+![Rebase client onto master](img/More_Rebase_2.png "Client rebase master")
+
+    git checkout master
+    git merge client
+
+![Merging the master and client branches](img/More_Rebase_3.png "Fast-forward master")
+
+    git rebase master server
+
+![Rebase server onto master](img/More_Rebase_4.png "Server rebase master")
+
+Finally, we have a linear history:
+
+![Final history](img/More_Rebase_5.png "Final history")
 
 **The perils of rebasing**
 
+Ah, but the joy of passing is not without its drawbacks, this can be summed up in a single line:
+
+**DO NOT** replace commits that exist outside your repository and that people may have based their
+work on.
+
+If you follow that guide, you will be fine. If you don't, people will hate you and your friends
+and family will despise you.
+
+When you pass, you are abandoning existing commits and creating new ones that are similar
+but different. If you push commits somewhere and others download them and base work on them,
+and then rewrite those commits with git rebase and upload them again, your collaborators will 
+have to re-merge their work and things will get complicated when you try to retry. put their
+work in yours.
+
+Let's look at an example of how the relining work you've released can cause problems. Suppose 
+you clone from a central server and then work with that. Your commit history looks like this:
+
+![Initial history](img/Perils_1.png "Initial history")
+
+![Make commits](img/Perils_2.png "Make some commits")
+
+![Fetch your commits](img/Perils_3.png "Fetch the commits")
+
+Now they are both in a bind. If you do a git pull, you will create a merge commit that includes 
+both lines of history, and your repository will look like this:
+
+![Mutex point](img/Perils_4.png "Mutex point")
+
+If you run a git log when your history looks like this, you will see two commits that have the
+same author, date, and message, which will be confusing. Also, if you send this history back 
+to the server, you will push all those modified commits back to the core server, which can 
+further confuse people. It's pretty safe to assume that the other developer doesn't want C4
+and C6 to be in the history; that is why they were exceeded in the first place.
+
 #### Squash
+
+"Squash" in Git means to combine multiple commits into one. You can do this at any time 
+(using Git's "Interactive Rebase" feature), although this is usually done when merging 
+branches.
+
+Note that there is **no separate git squash command**. Instead, squashing is more of an option
+when performing other Git commands like interactive _rebase_ or _merge_.
 
 **How to squash your commits**
 
+* **Interactive Rebase:**
+
+    You can manually squash your commits at any time using Git's "Interactive rebase" feature.
+
+    **_git rebase -i HEAD ~ [number_of_commits_to_squash]_**
+
+* **Pull Requests:**
+
+    This strategy, which uses squash when merging, is often used when closing a pull request. 
+Code hosting platforms like GitHub, GitLab, or Bitbucket support this as an option when 
+merging a pull request.
+
+  ![Pull request squash](img/Squash_1.png "Squash in pull request")
+
+* **Merge:**
+
+    The effect is very similar to what we have discussed before:
+all changes will be merged as with a normal merge, but by using the _--squash_ option, instead
+of automatically creating a merge commit, you will be left with local changes to your working
+copy which you can then commit yourself.
+
+    **_git merge --squash <branch>_**
+
+    **_git commit_**
+
+  ![Merge squash](img/Squash_2.png "Merge squash")
+
 #### Cherry-pick
+
+Cherry-pick is a powerful command that allows arbitrary Git commits to be picked by reference 
+and added to the current working _HEAD_. Running cherry-pick is the act of picking a commit from 
+one branch and applying it to another.
+
+_git cherry-pick_ can be useful for undoing changes. For example, suppose a commit is accidentally
+applied to the wrong branch. You can switch to the correct branch and cherry-pick on the 
+commit to apply it where it belongs.
+
+**_git cherry-pick <commit-hash>_** will apply changes made to an existing commit to another branch,
+while registering a new commit. Essentially, you can copy commits from one branch to another.
+
+![Cherry-Pick](img/Cherry_1.png "Cherry-picking")
+
+Note that cherry-pick will only pick up the changes in that commit (**b886a0** in this case),
+not all the changes in the features branch (for this you will have to use rebase or merge).
+
+**_git cherry-pick <commit-A> ^ .. <commit-B>_** will place commit A and all commits up to and
+including B at the top of the current branch.
+
+**_git cherry-pick <commit-A> .. <commit-B>_** will place each commit after A up to and including
+B at the top of the currently pulled branch.
+
+![Another history](img/Cherry_2.png "Another cherry-pick example")
+
+![Cherry-pick](img/Cherry_3.png "Cherry-pick")
