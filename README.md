@@ -73,7 +73,7 @@
 > Scott Chacon y Ben Straub, Pro Git, 2nd ed. Apress.
 > 
 > [2]
-> Git Notes For Professionals. goalkicker [Online]. Disponible en: https://goalkicker.com/GitBoo. [Accedido: 05-may-2021]
+> Git Notes For Professionals. goalkicker [Online]. Disponible en: https://goalkicker.com/GitBook. [Accedido: 05-may-2021]
 > 
 > [3]
 > Scott Chacon, Git Internals Source code control and beyond. 2008.
